@@ -407,7 +407,7 @@ public class JXPanel extends JPanel implements AlphaPaintable, BackgroundPaintab
         return scrollableHeightHint;
         
     }
-
+    
     /**
      * {@inheritDoc}
      */
@@ -485,27 +485,6 @@ public class JXPanel extends JPanel implements AlphaPaintable, BackgroundPaintab
     public void setScrollableTracksViewportWidth(boolean scrollableTracksViewportWidth) {
         setScrollableWidthHint(scrollableTracksViewportWidth ? 
                 ScrollableSizeHint.FIT : ScrollableSizeHint.NONE);
-    }
-
-    /**
-     * Sets the background color for this component by
-     * 
-     * @param bg
-     *            the desired background <code>Color</code>
-     * @see javax.swing.JComponent#getBackground()
-     * @see #setOpaque(boolean)
-     * 
-    * @beaninfo
-    *    preferred: true
-    *        bound: true
-    *    attribute: visualUpdate true
-    *  description: The background color of the component.
-     */
-    @Override
-    public void setBackground(Color bg) {
-        super.setBackground(bg);
-        
-        SwingXUtilities.installBackground(this, bg);
     }
     
     /**
