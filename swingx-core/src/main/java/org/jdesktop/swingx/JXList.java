@@ -205,11 +205,13 @@ import org.jdesktop.swingx.table.TableColumnExt;
  * string as seen by the user.
  * 
  * 
+ * @param <E> the type of elements in the list.
+ *
  * @author Ramesh Gupta
  * @author Jeanette Winzenburg
  */
 @JavaBean
-public class JXList extends JList {
+public class JXList<E> extends JList<E> {
     @SuppressWarnings("all")
     private static final Logger LOG = Logger.getLogger(JXList.class.getName());
     
@@ -288,7 +290,7 @@ public class JXList extends JList {
      * @exception IllegalArgumentException   if <code>dataModel</code>
      *                                           is <code>null</code>
      */                                           
-    public JXList(ListModel dataModel) {
+    public JXList(ListModel<E> dataModel) {
         this(dataModel, false);
     }
 
@@ -300,7 +302,7 @@ public class JXList extends JList {
      * @throws IllegalArgumentException   if <code>listData</code>
      *                                          is <code>null</code>
      */
-    public JXList(Object[] listData) {
+    public JXList(E[] listData) {
         this(listData, false);
     }
 
@@ -313,7 +315,7 @@ public class JXList extends JList {
      * @throws IllegalArgumentException   if <code>listData</code>
      *                                          is <code>null</code>
      */
-    public JXList(Vector<?> listData) {
+    public JXList(Vector<? extends E> listData) {
         this(listData, false);
     }
 
@@ -339,7 +341,7 @@ public class JXList extends JList {
      * @throws IllegalArgumentException   if <code>dataModel</code>
      *                                          is <code>null</code>
      */
-    public JXList(ListModel dataModel, boolean autoCreateRowSorter) {
+    public JXList(ListModel<E> dataModel, boolean autoCreateRowSorter) {
         super(dataModel);
         init(autoCreateRowSorter);
     }
@@ -354,7 +356,7 @@ public class JXList extends JList {
      * @throws IllegalArgumentException   if <code>listData</code>
      *                                          is <code>null</code>
      */
-    public JXList(Object[] listData, boolean autoCreateRowSorter) {
+    public JXList(E[] listData, boolean autoCreateRowSorter) {
         super(listData);
         if (listData == null) 
            throw new IllegalArgumentException("listData must not be null");
@@ -371,7 +373,7 @@ public class JXList extends JList {
      *  a RowSorter should be created automatically.
      * @throws IllegalArgumentException if <code>listData</code> is <code>null</code>
      */
-    public JXList(Vector<?> listData, boolean autoCreateRowSorter) {
+    public JXList(Vector<? extends E> listData, boolean autoCreateRowSorter) {
         super(listData);
         if (listData == null) 
            throw new IllegalArgumentException("listData must not be null");
@@ -964,7 +966,7 @@ public class JXList extends JList {
      * @throws IndexOutOfBoundsException if viewIndex < 0 or viewIndex >=
      *         getElementCount()
      */
-    public Object getElementAt(int viewIndex) {
+    public E getElementAt(int viewIndex) {
         return getModel().getElementAt(convertIndexToModel(viewIndex));
     }
 
@@ -983,7 +985,7 @@ public class JXList extends JList {
      * @see #addListSelectionListener
      */
     @Override
-    public Object getSelectedValue() {
+    public E getSelectedValue() {
         int i = getSelectedIndex();
         return (i == -1) ? null : getElementAt(i);
     }
