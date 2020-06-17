@@ -224,7 +224,7 @@ public abstract class RolloverProducer implements MouseListener, MouseMotionList
         
         try {
             componentLocation = e.getComponent().getMousePosition();
-        } catch (ClassCastException ignore) {
+        } catch (ClassCastException | NullPointerException ignore) {
             // caused by core issue on Mac/Java 7
             
             //try to work our way there by a different path
