@@ -1,3 +1,6 @@
 # Maven output dirs
 swingx-*/target/
 
+# macOS Finder metadata
+.DS_Store
+
